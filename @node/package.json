@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "babel-polyfill": "^6.16.0",
+    "cheerio": "^0.22.0",
+    "jquery": "^3.1.0",
+    "jsdom": "^9.4.1",
+    "node-fetch": "^1.6.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.16.0",
+    "babel-preset-es2015": "^6.16.0",
+    "babel-preset-latest": "^6.16.0",
+    "react": "^15.4.1",
+    "webpack": "^1.13.3"
+  },
+  "scripts": {
+    "test": "echo 'npm run test' ok",
+    "build": "babel src -d lib",
+    "babel": "babel src/babel -d src/babel/dist",
+    "run":"echo 'npm run' ok"
+  }
+}

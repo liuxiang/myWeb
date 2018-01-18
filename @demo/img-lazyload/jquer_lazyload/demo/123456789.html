@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- jQuery -->
+<script type="text/javascript" src="js/jquery-1.4.min.js"></script>
+<!-- 图片延迟加载 -->
+<script type="text/javascript" src="js/jquery.lazyload.js"></script>
+<script>
+$().ready(function(){
+	$("#tujie img").lazyload({
+		effect : "fadeIn",
+		failurelimit : 5
+	});
+});
+</script>
+<title>jquery.lazyload实例</title>
+</head>
+
+<body>
+	<div id="tujie">
+		<img class="cover" src="1.jpg" width="600" />
+		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+		<img class="cover" src="2.jpg" width="600" />
+	</div>
+</body>
+</html>

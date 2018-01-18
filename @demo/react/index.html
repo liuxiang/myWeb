@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <script src="http://cdn.bootcss.com/react/15.3.2/react.js"></script><!-- core react核心库 -->
+  <script src="http://cdn.bootcss.com/react/15.3.2/react-dom.js"></script><!-- dom解释库-->
+  <script src="http://cdn.bootcss.com/babel-core/5.8.38/browser.js"></script><!-- script type="text/babel" 解释库 -->
+
+</head>
+<body>
+1<div id="content"></div>
+2<div id="content2"></div>
+3<div id="content3"></div>
+4<div id="content4"></div>
+5<div id="content5"></div>
+6<div id="content6"></div>
+7<div id="content7"></div>
+8<div id="content8"></div>
+9<div id="content9"></div>
+10<div id="content10"></div>
+11<div id="content11"></div>
+
+<script type="text/babel">
+  // 计算
+  ReactDOM.render(<div className="cn">hello world {1 + 1}</div>, document.getElementById('content'));
+
+  // 样式
+  var myStyle = {color: '#3aff7c'};
+  ReactDOM.render(<div style={myStyle}>hello world {1 + 1}</div>, document.getElementById('content2'));
+  ReactDOM.render(<div style={{color: '#3aff7c'}}>hello world {1 + 1}</div>, document.getElementById('content3'));
+
+  // 数组
+  var arr = [
+    <div>1</div>,
+    <div>2</div>
+  ]
+  ReactDOM.render(<div>{arr}</div>, document.getElementById('content4'));
+
+  // 组件
+  var MyComponent = React.createClass({
+    render: function () {
+      return (
+        <div>
+          <div>name {this.props.name}</div>
+          <div>age {this.props.age}</div>
+        </div>
+      );
+    }
+  });
+  ReactDOM.render(<MyComponent name="run" age="18"/>, document.getElementById('content5'))
+
+  // 状态 & onClick
+  var MyComponent = React.createClass({
+    getInitialState: function () {
+      return {liked: false}
+    },
+    render: function () {
+      var liked = this.state.liked ? '喜欢' : '不喜欢';
+      return <div onClick={this.handleClick}>hello world {liked}</div>
+    },
+    handleClick: function (evnet) {
+      this.setState({liked: !this.state.liked})
+    }
+  });
+  ReactDOM.render(<MyComponent/>, document.getElementById('content6'))
+
+  // Props
+  var MyComponent = React.createClass({
+    getDefaultProps: function () {
+      return {name: 'default Name'}
+    },
+    render: function () {
+      return <div onClick={this.handleClick}>hello world {this.props.name}</div>
+    }
+  });
+  ReactDOM.render(<MyComponent/>, document.getElementById('content7'))
+
+  // 验证
+  var MyComponent = React.createClass({
+
+    render: function () {
+      return <div onClick={this.handleClick}>hello world {this.props.name}</div>
+    },
+    propTypes: {
+      title: React.PropTypes.string.isRequired
+    }
+  });
+  ReactDOM.render(<MyComponent/>, document.getElementById('content8'))
+
+  // input
+  var MyComponent = React.createClass({
+    getInitialState: function () {
+      return {value: 'ss'}
+    },
+    handleChange: function (event) {
+      this.setState({value: event.target.value});
+    },
+    render: function () {
+      var value = this.state.value;
+      return (
+        <div>
+          <input type="text" value={value} onChange={this.handleChange}/>
+          <div>{value}</div>
+        </div>
+      )
+    }
+  });
+  ReactDOM.render(
+    <MyComponent/>
+    , document.getElementById('content9'))
+
+  // 嵌套,functin传递
+  var Content = React.createClass({
+    render: function () {
+      return <div>
+        <button onClick={this.props.updateStateProp}>点我</button>
+        <h4>{this.props.myDataProp}</h4>
+      </div>
+    }
+  });
+  var HelloMessage = React.createClass({
+    getInitialState: function () {
+      return {value: 'Hello Runoob!'};
+    },
+    handleChange: function (event) {
+      this.setState({value: '菜鸟教程'})
+    },
+    render: function () {
+      var value = this.state.value;
+      return <div>222
+        <Content myDataProp={value}
+                 updateStateProp={this.handleChange}></Content>
+        222
+      </div>;
+    }
+  });
+  ReactDOM.render(
+    <HelloMessage />,
+    document.getElementById('content10')
+  );
+
+  // 操作DOM
+  var MyComponent = React.createClass({
+    handleClick: function() {
+      // 使用原生的 DOM API 获取焦点
+      this.refs.myInput.focus();
+    },
+    render: function() {
+      //  当组件插入到 DOM 后，ref 属性添加一个组件的引用于到 this.refs
+      return (
+        <div>
+          <input type="text" ref="myInput" />
+          <input
+            type="button"
+            value="点我输入框获取焦点"
+            onClick={this.handleClick}
+          />
+        </div>
+      );
+    }
+  });
+
+  ReactDOM.render(
+    <MyComponent />,
+    document.getElementById('content11')
+  );
+
+</script>
+
+<style>
+  .cn {
+    color: red;
+  }
+</style>
+
+</body>
+</html>
+
+<!--React 教程-->
+<!--http://www.runoob.com/react/react-tutorial.html-->
+
+<!--[课程]React入门-->
+<!--http://www.imooc.com/learn/504-->
+
+<!--[课程]React实战&#45;&#45;打造画廊应用（上）-->
+<!--http://www.imooc.com/learn/507-->

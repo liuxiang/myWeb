@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script src="./lib/vue.js"></script>
+
+<style>
+  body > div {
+    border: 1px solid red;
+    margin: 5px;
+  }
+</style>
+
+<div id="app">
+  {{ message }}
+  <button v-on:click="changeMessage">改变message</button>
+  <div>
+    <input v-model="message">
+  </div>
+</div>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      message: 'Hello Vue!'
+    },
+    methods: {
+      changeMessage: function () {
+        this.message = 'Hello LaraBase!'
+      }
+    }
+  })
+</script>
+
+
+<div id="app2">
+  <ol>
+    <li v-for="todo in todos">
+      {{ todo.text }}
+    </li>
+  </ol>
+</div>
+<script>
+  new Vue({
+    el: '#app2',
+    data: {
+      todos: [
+        {text: 'Learn JavaScript'},
+        {text: 'Learn Vue'},
+        {text: 'Build something awesome'}
+      ]
+    }
+  })
+</script>
+
+<div id="app3"></div>
+<script>
+  var data = {a: 1}
+  var vm = new Vue({
+    el: '#app3',
+    data: data
+  })
+  console.log('app3');
+  console.log(vm.a === data.a); // -> true
+  // 设置vm数据会使原来的数据发生改变
+  vm.a = 2;
+  console.log(data.a) // -> 2
+  // ... 反过来亦然
+  data.a = 3;
+  console.log(vm.a); // -> 3
+</script>
+
+<div id="app4"></div>
+<script>
+  var data = {
+    message: 'Hello Vue!'
+  };
+  var vm = new Vue({
+    el: '#app4',
+    data: data
+  });
+
+  console.log('app4');
+  console.log(vm.$el === document.getElementById('app4')); // -> true
+  console.log(vm.$data === data); // -> true
+  console.log(vm.$data.message === 'Hello Vue!'); // -> true
+
+</script>
+
+</body>
+</html>
+
+
