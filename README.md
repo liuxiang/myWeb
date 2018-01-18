@@ -1,8 +1,33 @@
-"# liuxiang_web" 
+# myWeb练习
+@demo
+  aat
+  Async_Progra
+  babel
+  Closure
+  Constructor
+  ES6
+  extends
+  img-lazyload
+  module
+  react
+  Vue
+@frame
+  my-app
+  reactPro
+@node
+  crawler4node
+  node-jquery
+  nodejs
 
-# 安装依赖
+---
+** summodule **
 ```
-cnpm install
-或
-cnpm install --save jsdom && cnpm install --save jquery
+git submodule init 
+git submodule update
+```
+
+---
+#﻿npm run build 启动空白.md
+```
+assetsPublicPath: './'
 ```
